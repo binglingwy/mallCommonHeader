@@ -1,0 +1,100 @@
+
+<div class="header clearfix bg-red pos-r">
+		<div class=" f-l w-200px pl-20">
+            <a href="/view/goods/itemIndex.html">
+                <img src="../../images/logo.jpg?t=201510222059" width="200" height="60" class="d-b" />
+            </a>
+        </div>
+    <div class=" f-r pt-21 pb-21 cor-w ta-r ov-f height-20" style="width:300px;">
+            <div class="d-ib pl-10 height-20 cor-w w-120px of-h" title="$!{currentShop.shopName}">
+                    <img src="../../images/gaojimendian_13x12.gif" class="d-ib va-m"/>
+            <span class="va-m">测试门店</span>
+                <input type="hidden" class="J_shopLevelName" id="J_shopLevelName" value="$!{currentShop.crmShopLevelName}">
+                <input type="hidden" class="J_shopLevelScore" id="J_shopScore" value="$!{currentShop.crmShopScore}">
+                <input type="hidden" class="J_shopLevelScoreLastMonth" id="J_shopScoreLastMonth" value="$!{currentShop.crmShopScoreLastMonth}">
+                <input type="hidden" class="J_isCrmVip" id="J_isCrmVip" value="$!{isCrmVip}">
+        </div>
+
+        <div class="d-ib pr-10 mr-10 height-20 pl-10 pos-r br-2" >
+            <a href="/admin/notice/shopNoticeList.do"><i class="iconfont cur-p cor-w" style="font-size: 18px">&#xe6ec;</i>
+                <i class="iconfont cur-p cor-w pos-a cor-red" style="font-size: 15px; left:18px; top: -4px;">&#xe6dd;</i>
+                <span class="cor-red fs-14">10</span>
+            </a>
+        </div>
+        <div class="d-ib height-20 cur-p cor-w mr-20" id="setupBtn">
+            设置<i class="icon iconfont ml-5">&#xe6d5;</i>
+        </div>
+    </div>
+    <div class="pl-20 pr-10 height-30 pt-15 fs-16 first-menu">
+            <span class="mr-40 ml-30 pos-r ta-c d-ib">
+                <a href="${base}/admin/notice/shopNoticeList.do" class="cor-w cur-p">店铺<span>■</span></a>
+            </span>
+
+            <span class="mr-40 pos-r d-ib">
+                <a href="/view/data/myShopIncome.html" class="cor-w cur-p {% if baseConfig.mainMenu === 'orderList' %}active{% endif %}">订单<span>■</span></a>
+            </span>
+
+            <span class="mr-40 pos-r d-ib">
+                <a href="/view/data/myShopIncome.html" class="cor-w cur-p {% if baseConfig.mainMenu === 'data' %}active{% endif %}">数据<span>■</span></a>
+            </span>
+
+            <span class="mr-10 pos-r d-ib">
+                <a href="${base}/admin/item/itemIndex" class="cor-w cur-p">商品<span>■</span></a>
+            </span>
+
+        <input type="hidden" id="xxoo" name="xoxo" value="dt:$currentShop.shopType zd:$currentShop.isMainStore bd:$currentUser.mallAuth bmd:$isWhiteList"/>
+        <input type="hidden" id="userNickName" name="userNickName" value="$!{currentUser.userNickName}"/>
+    </div>
+
+</div>
+
+<script id="sysConfigTpl" type="text/tpl">
+    <ul id="configWrap" class="of-h">
+        <li id="setPriceCheckbox" class="height-30 pt-5 pb-5 pl-10 bb-1 cur-p cor-grey6 password-modify active">
+            <i class="icon iconfont mr-10 cor-green" style="font-size:18px;">&#xe65d;</i>价格可见
+        </li>
+        <li id="editPasswordBtn" class="height-30 pt-5 pb-5 pl-10 bb-1 cur-p cor-grey6 password-modify"><i class="icon iconfont mr-10 cor-green" style="font-size:18px;">&#xe650;</i>修改密码</li>
+        <li  class="height-30 pt-5 pb-5 pl-10 cor-grey6"><i class="icon iconfont mr-10 cor-green" style="font-size:18px;">&#xe6b3;</i>
+            管理员
+        </li>
+        <li  class="height-30 pt-5 pb-5 pl-40 cor-grey6 ">写死的名字</li>
+        <li class="height-30 pt-5 pb-5 pl-10 bb-1 cor-grey6"><a href="${base}/admin/help/faq"><i class="icon iconfont mr-10 cor-green" style="font-size:18px;">&#xe634;</i>帮助中心</a></li>
+        <li id="loginOutBtn" class="height-30 pt-5 pb-5 pl-10 cur-p cor-grey6 login-out bt-1"><i class="icon iconfont mr-10 cor-cs" style="font-size:18px;">&#xe6d8;</i>退出</li>
+    </ul>
+</script>
+
+<!--修改密码-->
+<script id="editPasswordTpl" type="text/tpl">
+    <div id="editPasswordWrap" class="clearfix pt-20 pb-30">
+        <div class="w-640 formwrap f-l" style=" padding-left:20px;padding-right:30px;">
+            <form id="formlay" onsubmit="return false">
+                <div class="clearfix form-group">
+                    <div class="form-group-name">原密码：</div>
+                    <div class="form-group-right" data-errorparent="true">
+                        <input type="password" id="formerPwd" class="form-input" data-require="true" name="form-password" placeholder="" data-null="密码不能为空">
+                    </div>
+                </div>
+                <div class="clearfix form-group">
+                    <div class="form-group-name">新密码：</div>
+                    <div class="form-group-right" data-errorparent="true">
+                        <input type="password" id="pwd1" class="form-input" data-require="true" name="form-new-password"  maxlength="20" placeholder="" data-null="密码不能为空">
+                    </div>
+                </div>
+                <div class="clearfix form-group">
+                    <div class="form-group-name">重复密码：</div>
+                    <div class="form-group-right" data-errorparent="true">
+                        <input type="password" id="pwd2" class="form-input" data-require="true" name="form-new-repassword"  maxlength="20" placeholder="" data-null="确认密码不能为空" data-repeat="form-new-password" data-error="两次输入的密码不一致">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="f-l w-260" style="width: 210px;">
+            <div class="guize" style="padding-top:30px;height:180px;padding-left: 30px;">
+                <p>密码要求：</p>
+                <p> • 长度为8-20个字符</p>
+                <p> • 必须同时包含字母和数字</p>
+                <p> •  账号和密码不能一样</p>
+            </div>
+        </div>
+    <div>
+</script>
